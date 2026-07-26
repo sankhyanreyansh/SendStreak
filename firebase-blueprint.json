@@ -1,0 +1,149 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "The user profile containing details of their academic and professional background.",
+      "type": "object",
+      "properties": {
+        "school": { "type": "string" },
+        "major": { "type": "string" },
+        "gradYear": { "type": "string" },
+        "bio": { "type": "string" },
+        "achievements": { "type": "array" },
+        "followUpDelayDays": { "type": "integer" },
+        "attachResume": { "type": "boolean" },
+        "resumeBase64": { "type": "string" },
+        "resumeName": { "type": "string" }
+      },
+      "required": ["school", "major"]
+    },
+    "Contact": {
+      "title": "Contact",
+      "description": "A networking contact/lead added by the user.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "company": { "type": "string" },
+        "role": { "type": "string" },
+        "contextBlurb": { "type": "string" },
+        "status": { "type": "string" },
+        "dateAdded": { "type": "string" },
+        "dateSent": { "type": "string" },
+        "followUpDueDate": { "type": "string" },
+        "gmailThreadId": { "type": "string" },
+        "contactReplyText": { "type": "string" },
+        "generatedResponseText": { "type": "string" },
+        "followUpGenerationsCount": { "type": "integer" },
+        "replyGenerationsCount": { "type": "integer" }
+      },
+      "required": ["id", "name", "company", "role", "status", "dateAdded"]
+    },
+    "Draft": {
+      "title": "Draft",
+      "description": "An outreach email draft generated for a specific contact.",
+      "type": "object",
+      "properties": {
+        "contactId": { "type": "string" },
+        "emailBody": { "type": "string" },
+        "subjectLine": { "type": "string" },
+        "generatedAt": { "type": "string" },
+        "edited": { "type": "boolean" }
+      },
+      "required": ["contactId", "emailBody", "subjectLine", "generatedAt", "edited"]
+    },
+    "StreakData": {
+      "title": "StreakData",
+      "description": "Streak and quota status of a user.",
+      "type": "object",
+      "properties": {
+        "currentStreak": { "type": "integer" },
+        "longestStreak": { "type": "integer" },
+        "lastSentDate": { "type": "string" },
+        "totalEmailsSent": { "type": "integer" },
+        "dailyQuota": { "type": "integer" },
+        "sentToday": { "type": "integer" },
+        "streakPendingRestoration": { "type": "boolean" },
+        "savedStreakValue": { "type": "integer" }
+      }
+    },
+    "Badge": {
+      "title": "Badge",
+      "description": "A gamified career milestone badge.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "unlocked": { "type": "boolean" },
+        "unlockedDate": { "type": "string" }
+      },
+      "required": ["id", "name", "description", "unlocked"]
+    },
+    "UserAnalyticsSummary": {
+      "title": "UserAnalyticsSummary",
+      "description": "The computed analytics stats of an individual user.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "email": { "type": "string" },
+        "onboardingDate": { "type": "string" },
+        "totalEmailsSent": { "type": "integer" },
+        "totalLeadsAdded": { "type": "integer" },
+        "avgEmailsSentPerDay": { "type": "number" },
+        "currentStreak": { "type": "integer" },
+        "longestStreak": { "type": "integer" },
+        "avgStreak": { "type": "number" },
+        "streakSum": { "type": "integer" },
+        "streakCount": { "type": "integer" },
+        "updatedAt": { "type": "string" }
+      }
+    },
+    "GlobalAnalyticsSummary": {
+      "title": "GlobalAnalyticsSummary",
+      "description": "The aggregated global analytics across all users of the system.",
+      "type": "object",
+      "properties": {
+        "totalEmailsSent": { "type": "integer" },
+        "totalLeadsAdded": { "type": "integer" },
+        "totalUsers": { "type": "integer" },
+        "currentStreakSum": { "type": "integer" },
+        "longestStreakMax": { "type": "integer" },
+        "avgStreakSum": { "type": "number" },
+        "avgEmailsSentPerDaySum": { "type": "number" },
+        "updatedAt": { "type": "string" }
+      }
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "Primary user profile, feature settings and state flags."
+    },
+    "/users/{userId}/contacts/{contactId}": {
+      "schema": "Contact",
+      "description": "Subcollection of networking contact leads."
+    },
+    "/users/{userId}/drafts/{contactId}": {
+      "schema": "Draft",
+      "description": "Subcollection of generated email outreach drafts."
+    },
+    "/users/{userId}/streakData/main": {
+      "schema": "StreakData",
+      "description": "User's current daily quota streak statistics."
+    },
+    "/users/{userId}/badges/{badgeId}": {
+      "schema": "Badge",
+      "description": "Unlocked status of milestones and badges."
+    },
+    "/users/{userId}/stats/summary": {
+      "schema": "UserAnalyticsSummary",
+      "description": "Computed individual user analytics."
+    },
+    "/global_stats/summary": {
+      "schema": "GlobalAnalyticsSummary",
+      "description": "Aggregated overall application metrics across all users."
+    }
+  }
+}

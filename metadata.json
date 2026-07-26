@@ -1,0 +1,8 @@
+{
+  "name": "SendStreak",
+  "description": "A gamified cold email assistant for students that helps them personalize and track cold outreach emails with streaks and badges.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
