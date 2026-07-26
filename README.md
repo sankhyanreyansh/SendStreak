@@ -1,10 +1,12 @@
-# SendStreak 🚀
+# SendStreak
 
 SendStreak is an open-source, AI-powered, gamified cold outreach assistant designed to help students, researchers, and job seekers maintain daily cold emailing habits, personalize outreach using Gemini AI, track prospects, and boost response rates.
 
+![SendStreak Dashboard](assets/dashboard.png)
+
 ---
 
-## ✨ Key Features
+## Key Features
 
 - **AI Draft Generator**: Powered by Gemini API (`@google/genai`) to draft highly personalized cold emails based on your background, recipient bio, and custom brag sheet.
 - **Resume Context Integration**: Upload your resume PDF to extract skills, project experience, and background for hyper-tailored outreach.
@@ -15,7 +17,7 @@ SendStreak is an open-source, AI-powered, gamified cold outreach assistant desig
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 - **Frontend**: React 19, TypeScript, Tailwind CSS, Lucide Icons, Motion
 - **Backend Server**: Express.js with Vite development server middleware
@@ -25,7 +27,7 @@ SendStreak is an open-source, AI-powered, gamified cold outreach assistant desig
 
 ---
 
-## 🚀 Step-by-Step Setup Guide
+## Step-by-Step Setup Guide
 
 ### 1. Prerequisites
 
@@ -81,8 +83,8 @@ Before running SendStreak, ensure you have:
 4. Click **Publish**.
 
 #### Get Web App Credentials
-1. Click the gear icon (⚙️) next to **Project Overview** -> **Project settings**.
-2. Under **General** -> **Your apps**, click the **Web icon (`</>`)** to register a web app.
+1. Click the gear icon next to **Project Overview** -> **Project settings**.
+2. Under **General** -> **Your apps**, click the **Web icon** to register a web app.
 3. Enter an App nickname (e.g., `SendStreak Web`) and click **Register app**.
 4. Copy the `firebaseConfig` object properties:
    - `apiKey` -> `VITE_FIREBASE_API_KEY`
@@ -164,7 +166,7 @@ To allow users to send emails directly from Gmail and check for replies:
 
 ---
 
-## 📦 Production Deployment
+## Production Deployment
 
 To build and run the application for production:
 
@@ -180,7 +182,7 @@ The app will start on port `3000` by default.
 
 ---
 
-## 📜 License
+## License
 
 Distributed under the [MIT License](LICENSE). Free to modify, self-host, and distribute.
 
